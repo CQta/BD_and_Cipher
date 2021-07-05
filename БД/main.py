@@ -3,6 +3,11 @@ import numpy as np
 v = 1
 N = 1
 conn = sqlite3.connect('orders.db')
+
+
+
+
+
 cur = conn.cursor()
 cur.execute("""create table if not exists r(id int primary key, fname text, lname text, gender text, plat int)""")
 conn.commit()
