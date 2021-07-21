@@ -30,13 +30,13 @@ while choice != 0:
         while n != 0:
             print('Введите имя')
             name = input()
-            name = CRUD.OrderMapper.Chiper(name)
+            name = CRUD.Chiper(name)
             print('Введите фамилию')
             s_name = input()
-            s_name = CRUD.OrderMapper.Chiper(s_name)
+            s_name = CRUD.Chiper(s_name)
             print('Введите пол')
             gen = input()
-            gen = CRUD.OrderMapper.Chiper(gen)
+            gen = CRUD.Chiper(gen)
             print('Введите зарплату')
             zar = int(input())
             get_info = (name, s_name, gen, zar)
@@ -45,9 +45,13 @@ while choice != 0:
             n = n-1
 
     if choice == 2:#Удаление
-        print('Введите id для удаления, для удаления всех данных введите all ')
+        print('Введите id  для удаления, для удаления всех данных введите all ')
         d = input()
-        CRUD.OrderMapper.Del(d, cur)
+        if d =="all":
+            CRUD.OrderMapper.Del(cur)
+        else:
+            CRUD.OrderMapper.Del_by_lname(cur, d,conn)
+
 
 
 

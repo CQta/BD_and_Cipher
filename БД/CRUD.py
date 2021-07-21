@@ -25,12 +25,12 @@ class OrderMapper:
         cur.execute("INSERT INTO r(fname, lname, gender, plat) VALUES(?, ?, ?, ?)", get_info)
 
 
-    def Del(d, cur):
-        if d == "all":
+    def Del(cur):
             cur.execute("DELETE FROM r")
-        else:
-            cur.execute("DELETE FROM r WHERE lname = ?", (d,))
 
+    def Del_by_id(cur, d, conn):
+        cur.execute("DELETE FROM r WHERE id = ?", (d,))
+        conn.commit()
     def Show(cur):
             cur.execute('SELECT * FROM r')
             rows = cur.fetchall()
