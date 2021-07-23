@@ -8,7 +8,6 @@ while choice != 0:
     if choice == 0:
         break
     if choice == 3:#Вывод
-        j = 1
         Display_info = []
         rows = order_mapper.show()
         for row in rows:
@@ -23,27 +22,27 @@ while choice != 0:
         n = int(input())
         while n != 0:
             print('Введите имя')
-            name = input()
-            name = CRUD.chiper(name)
+            f_name = input()
+            f_name = CRUD.chiper(f_name)
             print('Введите фамилию')
-            s_name = input()
-            s_name = CRUD.chiper(s_name)
+            l_name = input()
+            l_name = CRUD.chiper(l_name)
             print('Введите пол')
-            gen = input()
-            gen = CRUD.chiper(gen)
+            gender = input()
+            gender = CRUD.chiper(gender)
             print('Введите зарплату')
-            zar = int(input())
-            get_info = (name, s_name, gen, zar)
+            salary = int(input())
+            get_info = (f_name, l_name, gender, salary)
             order_mapper.create(get_info)
             n = n - 1
 
     if choice == 2:#Удаление
         print('Введите id  для удаления, для удаления всех данных введите all ')
-        d = input()
-        if d == "all":
-            order_mapper.delete()
+        id = input()
+        if id == "all":
+            order_mapper.delete_all()
         else:
-            order_mapper.del_by_id(d)
+            order_mapper.delete_by_id(id)
 
 
 
