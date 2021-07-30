@@ -1,4 +1,4 @@
-import sqlite3
+from prettytable import PrettyTable
 import CRUD
 choice = 1
 order_mapper = CRUD.OrderMapper()
@@ -10,12 +10,15 @@ while choice != 0:
     if choice == 3:#Вывод
         Display_info = []
         rows = order_mapper.show()
+        table_name = ('ID', 'Name', 'Surname', 'Gender', 'Salary')
+        table = PrettyTable(table_name)
         for row in rows:
             for j in range(5):
                 d_name = CRUD.decoder(row[j])
                 Display_info.append(d_name)
-            print(Display_info)
+            table.add_row(Display_info)
             Display_info.clear()
+        print(table)
 
     if choice == 1:#Ввод
         print('Введите кол-во людей')
